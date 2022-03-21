@@ -191,5 +191,29 @@ Bellow you will find the map of the files included in this repository.
 ## Pipeline
 
 ## Monitoring
+Install grafana onto the K8s cluster.
+ - PersistentVolumeClaim
+ - Deployment
+ - Service
+
+Install loki using helm
+ - helm repo add loki https://grafana.github.io/loki/charts
+ - helm repo update
+ - helm upgrade --install loki loki/loki-stack
+
+Open Grafana at http://Grafana-node-IP:3000/login
+ - Default Username/Password (admin/admin)
+
+Add Loki as a data source
+ - URL is http://loki:3100
+
+Verify logs are accessible by Grafana
+ - Click Explore on the taskbar to the left of the screen. (The symbol is a compass)
+ - Click Log browser, select app, select reverse-angular-api, post-service-api, and user-service-api.
+ - Select show logs
+
+Create a dashboard for your needs
+ - Create dashboard
+ - Add a panel for each of the logs so you can trace anything done
 
 ## Kubernetes
