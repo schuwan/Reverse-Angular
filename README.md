@@ -212,8 +212,22 @@ Verify logs are accessible by Grafana
  - Click Log browser, select app, select reverse-angular-api, post-service-api, and user-service-api.
  - Select show logs
 
-Create a dashboard for your needs
+Install prometheus using helm
+ - helm repo add bitnami https://charts.bitnami.com/bitnami
+ - helm repo update
+ - helm install prometheus bitnami/kube-prometheus
+
+Verify prometheus is monitoring the User-service and Post-service
+ - Run kubectl port-forward --namespace default svc/prometheus-kube-prometheus-prometheus 9090:9090
+ - Go to http://localhost:9090/targets and ensure you see the 'user-service-monitor' and 'post-service-monitor' in the list of All targets
+
+Add Prometheus as a data source
+ - URL is http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local:9090/
+
+Create dashboards for your needs
  - Create dashboard
  - Add a panel for each of the logs so you can trace anything done
+ - Import the JVM (Micrometer) dashboard for prometheus
+   - Use code 4701
 
 ## Kubernetes
