@@ -4,12 +4,15 @@ import { Observable } from "rxjs";
 import { of } from "rxjs"
 import {Post} from "../classes/Post";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+//import { environment } from 'src/environments/environment'; // Use this for developing locally
+import { environment } from 'src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  baseUrl: string = `/backend/`;
+  baseUrl: string = environment.POST_URI;
 
   posts : Post[];
   userToken! : string | null;

@@ -6,6 +6,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, Observable, of} from "rxjs"
 import { Router } from '@angular/router';
 import USERS from "../USERS";
+//import { environment } from 'src/environments/environment'; // Use this for developing locally
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class UserService {
 
   users?: User[];
   // baseurl for production server
-  baseUrl: string = `/backend/`;
+  baseUrl: string = environment.USER_URI;
   branches:any[];
   genders:any[];
 

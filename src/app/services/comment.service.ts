@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Comment} from "../classes/Comment";
 import {Observable} from "rxjs";
+//import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  baseUrl: string = `/backend/`;
+  baseUrl: string = environment.COMMENT_URI;
 
   constructor(
     private httpClient : HttpClient
