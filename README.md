@@ -231,6 +231,7 @@ Create dashboards for your needs
    - Use code 4701
 
 ## Kubernetes
+Create Regional Cluster and SQL isntance within GCP.
 
 Pull and create basic deployments for the following images with the following environmental variables:
  - javasre2022/angular:latest
@@ -250,6 +251,8 @@ Pull and create basic deployments for the following images with the following en
     - AWS_ACCESS_KEY
     - AWS_SECRET_KEY
     
-Create services for each deployment above, where all three will also act as load balancers
+Create services for each deployment above, where all three will also act as load balancers.
+
+Install Jenkins Pipeline and Grafana on the cluster. Note: due to us not being able to access GCP services we requried to setup Role Bindings to get it working in the cluster properly.
 
 
