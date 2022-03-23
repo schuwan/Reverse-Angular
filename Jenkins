@@ -1,18 +1,18 @@
 pipeline {
   agent any
   stages {
-        stage('Test') {
-          steps {
-            sh 'mvn -f pom.xml test'
-          }
-        }
+//        stage('Test') {
+//          steps {
+//            sh 'mvn -f pom.xml test'
+//         }
+//        }
 
-        stage('Build') {
-          steps {
-             sh 'mvn -f pom.xml clean install'
-             sh 'mvn -f pom.xml clean package -DskipTests'
-          }
-        }
+//        stage('Build') {
+//          steps {
+//             sh 'mvn -f pom.xml clean install'
+//             sh 'mvn -f pom.xml clean package -DskipTests'
+//          }
+//        }
 
         stage('Docker Hub') {
           steps {
