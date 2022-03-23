@@ -231,3 +231,25 @@ Create dashboards for your needs
    - Use code 4701
 
 ## Kubernetes
+
+Pull and create basic deployments for the following images with the following environmental variables:
+ - javasre2022/angular:latest
+    - VALIDATION 
+    - EUREKA_URI
+    - ANGULAR_URI
+ - javasre2022/postservice:latest
+    - VALIDATION
+    - EUREKA_URI
+    - ANGULAR_URI
+    - AWS_ACCESS_KEY
+    - AWS_SECRET_KEY
+ - javasre2022/userservice:latest **NOTE - ALSO NEEDS A PERSISTENTVOLUME / PERSISTENTVOLUMECLAIM**
+    - VALIDATION
+    - EUREKA_URI
+    - ANGULAR_URI
+    - AWS_ACCESS_KEY
+    - AWS_SECRET_KEY
+    
+Create services for each deployment above, where all three will also act as load balancers
+
+
