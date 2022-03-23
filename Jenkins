@@ -1,7 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('CheckJAVA') {
         stage('CheckJAVA') {
           steps {
             sh 'echo $JAVA_HOME'
@@ -38,9 +37,5 @@ pipeline {
 
           }
          }
-
-      
-    }
-
   }
 }
