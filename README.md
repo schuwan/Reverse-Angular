@@ -243,7 +243,7 @@ Pull and create basic deployments for the following images with the following en
     - ANGULAR_URI
     - AWS_ACCESS_KEY
     - AWS_SECRET_KEY
- - javasre2022/userservice:latest **NOTE - ALSO NEEDS A PERSISTENTVOLUME / PERSISTENTVOLUMECLAIM**
+ - javasre2022/userservice:latest ***NOTE - ALSO NEEDS A PERSISTENTVOLUME / PERSISTENTVOLUMECLAIM***
     - VALIDATION
     - EUREKA_URI
     - ANGULAR_URI
