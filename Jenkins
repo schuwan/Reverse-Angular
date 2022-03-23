@@ -37,6 +37,25 @@ pipeline {
           }
         }
 
+         stage('Checkout') {
+          steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ghp', url: 'https://github.com/jschuwan/github']]])
+          }
+        }
+
+        stage('Quality Gate1') {
+          steps {
+             dir('backup/Discovery/') {
+                    script {
+                    sh 'mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=Discovery \
+                          -Dsonar.host.url=http://35.222.177.228:9000 \
+                          -Dsonar.login=53c89b637656beca6c8886ba0eea07a324671493'
+                    } 
+              }
+           } 
+        }
+
         stage('DeployToCluster') {
           steps {
             withKubeConfig(credentialsId: '39a085b6-0856-43e2-94c5-7c1e4b583506', serverUrl: 'https://35.232.148.254') {
