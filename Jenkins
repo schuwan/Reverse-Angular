@@ -1,25 +1,37 @@
 pipeline {
   agent any
   stages {
-        stage('CheckJAVA') {
+        stage('Test') {
           steps {
-            sh 'echo $JAVA_HOME'
+            sh 'mvn -f pom.xml test'
           }
         }
 
-        stage('CheckDocker') {
+        stage('Build') {
           steps {
-            sh 'docker run --help'
+             sh 'mvn -f pom.xml clean install'
+             sh 'mvn -f pom.xml clean package -DskipTests'
           }
         }
 
-        stage('CheckDockerAgain') {
+        stage('Docker Hub') {
           steps {
-            sh 'docker pull jschuwan/jschuwan:bc485abe7f7b4f47a11eba36c84169a8'
+            script {
+            sh "docker build -t javasre2022/angular ."
+            }
           }
         }
+        
+        stage('Docker Deliver') {
+        steps {
+            script {
+              sh "docker login -u javaSRE2022 -p 7ce357ae-b369-4a7d-876c-10d27cf1171e"
+              sh "docker push javasre2022/angular:latest"
+            }
+        }
+    }
 
-        stage('CheckMVN') {
+        stage('SRE Approval') {
           steps {
             sh 'mvn --version'
           }
