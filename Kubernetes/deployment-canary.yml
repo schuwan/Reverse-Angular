@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project3-angular-deployment-canary
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: angular-deployment
+      role: frontend
+      env: canary
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: angular-deployment
+        role: frontend
+        env: canary
+    spec:
+      containers:
+      - image: javasre2022/angular:latest
+        env:
+          - name: VALIDATION
+            value: http://34.71.225.31:8081/users/validate
+          - name: EUREKA_URI
+            value: http://35.239.70.25:8083/eureka
+          - name: ANGULAR_URI
+            value: http://34.69.17.73:80
+        imagePullPolicy: Always
+        name: angularcontainer
+        ports:
+        - containerPort: 80
+
+
+
+
+
+
+
+
+
