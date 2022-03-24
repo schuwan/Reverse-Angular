@@ -189,6 +189,65 @@ Bellow you will find the map of the files included in this repository.
 # DevOps
 
 ## Pipeline
+Jenkins
+Enter Jenkins via LoadBalancer
+
+http://34.135.46.184:8080/
+
+Enter (Username/Password)
+Username: revature
+Password: password
+
+Setting up plugins and configuration
+
+Plugins
+
+Click on “Manage Jenkins” > “Manage Plugins”
+
+Grab the following plugins
+Blue Ocean
+Maven Integration Plugin
+Docker Pipeline
+Docker plugin
+Git Pipeline for Blue Ocean
+Google Kubernetes Engine Plugin
+Kubernetes Plugin
+Pipeline
+Pipeline Maven Integration Plugin
+
+Configuration
+
+Click on “Manage Jenkins” > “Global Tool Configuration”
+
+For Maven - “Add Maven” - MAVEN_HOME should be the directory for the “maven” file.
+
+For JDK - “Add JDK” - Install Automatically
+
+Note: For this pipeline process, both Java 8 and 11 are necessary for the pipeline building process. Java 11 will need to be manually added to the VM or cluster instance.
+
+Setting up the Pipeline
+
+Click on “Open Blue Ocean” > “Create Pipeline”
+
+Choose “Git”
+
+Within the “Connect to a Git repository” section, type in the url for the Github Repository you will be using.
+
+Note: You will be required to make a Jenkinsfile and place this within your Github Repository beforehand. 
+Sonarcloud
+          Go to sonarcloud, make account
+o   Connect the organization (github repo)
+§  Connect all branches needed
+o   Follow the configuration and grab the GitHub secret
+§  Go to your repository that will be called, go to that repo’s settings (not github main settings) -> security -> secrets -> actions -> Manage your environments and add environment secrets-> new environment->  name it same as sonar token created -> can configure branches, I left as all-> add a secret, also name it as sonar token and paste the token created in sonarcloud.
+o   Following configuration, make sure to do the properties (pom) and build.yaml
+o   In each project, go to bottom left to administration -> permissions -> make sure “anyone” can execute.
+o   Top right corner, click on picture(account) -> My account -> security -> generate token
+§  That goes in Jenkins global configuration… Kind = secret text, Scope = Global, Secret = token generated in sonar cloud account.
+-          Go to dockerhub.com -> click your username on top right and go to account settings ->security-> create new access token
+o   This token will be used in Jenkins under “global credentials”…
+§  The “ID” you give it is the name that the “dockerHubCreds” in the Jenkinsfile calls.
+-          Jenkins: Make sure jdk 11 installed, make sure maven installed
 
 ## Monitoring
 Install grafana onto the K8s cluster.
