@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: angular-deployment
+        version: "1.0"
     spec:
       containers:
         - image: javasre2022/angular:latest
